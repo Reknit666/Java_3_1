@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -174,7 +175,7 @@ public class HelloApplication extends Application {
                 gc.strokeText(String.valueOf(id), x + (double) CARD_SIZE / 2 - 10, y + (double) CARD_SIZE / 2 + 10);
             } else {
                 // Рисуем рубашку карточки
-                gc.setFill(javafx.scene.paint.Color.GRAY);
+                gc.setFill(Color.GRAY);
                 gc.fillRect(x, y, CARD_SIZE, CARD_SIZE);
             }
             gc.strokeRect(x, y, CARD_SIZE, CARD_SIZE); // Рисуем границу карточки
