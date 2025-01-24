@@ -3,6 +3,7 @@ package com.example.lab3_1;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -124,17 +125,20 @@ public class HelloApplication extends Application {
         Timeline timeline = new Timeline();
         KeyFrame keyFrame = new KeyFrame(
                 Duration.seconds(1), // Задержка в 1 секунду
-                event -> {
-                    firstCard.hide(); // Переворачиваем карточки обратно
-                    secondCard.hide();
-                    resetCards();
-                    drawBoard(gc); // Перерисовываем игровое поле
-                }
+                this::handleKeyFrameEvent // Вызов отдельного метода для обработки события
         );
         timeline.getKeyFrames().add(keyFrame);
         timeline.setOnFinished(event -> isProcessing = false); // Сбрасываем флаг после завершения
         timeline.play(); // Запускаем таймер
     }
+
+    private void handleKeyFrameEvent(ActionEvent actionEvent) {
+        firstCard.hide(); // Переворачиваем карточки обратно
+        secondCard.hide();
+        resetCards();
+        drawBoard(gc);
+    }
+
 
 
     private void resetCards() {
